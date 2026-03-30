@@ -23,7 +23,7 @@ exports.handler = async (event) => {
   }
 
   try {
-    const { access_code } = JSON.parse(event.body);
+    const { access_code } = JSON.parse(event.body || '{}');
 
     if (!access_code) {
       return {
@@ -67,6 +67,7 @@ exports.handler = async (event) => {
         }
       })
     };
+
   } catch (error) {
     console.error('Error in validate-access:', error);
     return {
